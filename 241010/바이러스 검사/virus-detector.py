@@ -12,7 +12,7 @@ for customer in customers:
     else:
         member = rest / MBR
         if member != math.ceil(member):
-            members.append(maht.ceil(member))
+            members.append(math.ceil(member))
         else:
             members.append(int(member))
 

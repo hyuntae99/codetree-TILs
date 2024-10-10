@@ -16,4 +16,4 @@ for customer in customers:
         else:
             members.append(int(member))
 
-print(max(members) + 1)
+print(sum(members) + n)

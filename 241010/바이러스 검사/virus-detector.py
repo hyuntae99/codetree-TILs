@@ -11,7 +11,7 @@ for customer in customers:
         members.append(0)
     else:
         member = rest / MBR
-        if member != maht.ceil(member):
+        if member != math.ceil(member):
             members.append(maht.ceil(member))
         else:
             members.append(int(member))

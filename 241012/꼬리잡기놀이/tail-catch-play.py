@@ -16,8 +16,8 @@ def bfs(ci,cj,team_n):
         si, sj = q.popleft()  # 현재 위치
         for di, dj in ((-1, 0), (1, 0), (0, -1), (0, 1)):  # 4방향 탐색
             ni, nj = si + di, sj + dj
-            # 미방문 + 범위 내 + 2, 3이면
-            if 0 <= ni < N and 0 <= nj < N and not v[ni][nj] and arr[ni][nj] in (2, 3):
+            # 미방문 + 범위 내 + 2 또는 출발지 아닌 곳에서 온 3
+            if 0 <= ni < N and 0 <= nj < N and not v[ni][nj] and (arr[ni][nj] == 2 or ((ci,cj) != (si,sj) and arr[ni][nj] == 3)):
                 v[ni][nj] = 1
                 q.append((ni,nj))
                 team.append((ni,nj))
@@ -33,7 +33,7 @@ team_n = 5 # 팀 번호
 teams = {} # 찾을 때 5 더하자!
 for i in range(N):
     for j in range(N):
-        if v[i][j] == 0 and arr[i][j] == 1: # 머리 위치인 경우
+        if not v[i][j] and arr[i][j] == 1: # 머리 위치인 경우
             bfs(i,j,team_n)
             team_n += 1
 
@@ -74,4 +74,5 @@ for k in range(K):
             teams[team_n].reverse()
             break
         ci, cj = ci + ddi[dr], cj + ddj[dr]
+
 print(ans)
